@@ -30,6 +30,9 @@ namespace CoreMVCControllerTest1
             //配置路由
             app.UseMvc(routes =>
             {
+                //ParamsMappingTest专用路由
+                routes.MapRoute(name: "ParamsMappingTest", template: "pmt/{action}/{id?}", defaults: new { controller = "ParamsMappingTest" });
+
                 //TestActionResultController专用路由
                 routes.MapRoute(name: "TestActionResult", template: "tar/{action}", defaults: new { controller = "TestActionResult" });
 

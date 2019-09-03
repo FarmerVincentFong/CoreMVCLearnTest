@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewBagDemo</title>
+</head>
+<body>
+    @{ var hobby = ViewBag.Hobby as string[];}
+    <h3>@ViewBag.Title</h3>
+    <ul>
+        <li>姓名：@ViewBag.Name</li>
+        <li>日期：@ViewBag.Birthday</li>
+        <li>
+            爱好：@foreach (var h in hobby)
+            {@(h + " ")
+        }
+        </li>
+    </ul>
+</body>
+</html>

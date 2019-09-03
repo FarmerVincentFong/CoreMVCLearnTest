@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = null;
+}
+@model CoreMVCViewTest1.Models.Person;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewModelDemo</title>
+</head>
+<body>
+    <h3>@ViewBag.Title</h3>
+    @Model.Id  @Model.Age
+    <ul>
+        <li>姓名：@Model.Name</li>
+        <li>日期：@Model.Birthday</li>
+        <li>
+            爱好：@string.Join(",", Model.Hobby)
+        </li>
+    </ul>
+</body>
+</html>

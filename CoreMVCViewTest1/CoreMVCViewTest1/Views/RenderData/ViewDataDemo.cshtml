@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewDataDemo</title>
+</head>
+<body>
+    @{ var hobby = ViewData["hobby"] as string[];}
+    <h3>@ViewData["title"]</h3>
+    <ul>
+        <li>姓名：@ViewData["name"]</li>
+        <li>日期：@ViewData["bitrhday"]</li>
+        <li>
+            爱好：@foreach (var h in hobby)
+            {@(h + " ")
+        }
+        </li>
+    </ul>
+</body>
+</html>

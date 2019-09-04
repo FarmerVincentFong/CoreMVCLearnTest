@@ -36,5 +36,13 @@ namespace CoreMVCViewTest1.Controllers
             Person p = new Person { Id = 1001, Name = "FWQ", Age = 23, Birthday = new DateTime(2019, 1, 1), Hobby = new string[] { "Run", "Jump", "Code" } };
             return View(p);
         }
+
+        public IActionResult SharedViewDemo()
+        {
+            List<Person> pList = new List<Person>();
+            pList.Add(new Person { Id = 1001, Age = 18, Name = "www", Birthday = new DateTime(1995, 1, 1), Hobby = new string[] { "Run", "Jump", "Code" } });
+            pList.Add(new Person { Id = 2002, Age = 28, Name = "fff", Birthday = new DateTime(2000, 1, 1), Hobby = new string[] { "Run2", "Jump2", "Code2" } });
+            return View("Shared1View", pList); ;
+        }
     }
 }

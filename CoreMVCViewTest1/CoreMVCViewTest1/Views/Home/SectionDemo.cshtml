@@ -1,0 +1,17 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "SectionDemo";
+}
+@model CoreMVCViewTest1.Models.Person;
+
+<h3>@ViewBag.Title --内容页</h3>
+<p>SectionDemo By FWQ</p>
+<ul>
+    <li>姓名：@Model.Name</li>
+    <li>年龄：@Model.Age</li>
+</ul>
+
+@*@section footer{
+    <p>内容页的Section Footer</p>
+}*@

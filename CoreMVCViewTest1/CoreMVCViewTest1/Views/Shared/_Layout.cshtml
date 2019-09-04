@@ -1,0 +1,31 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title -FWQ Core Test</title>
+</head>
+<body>
+    <div class="header" style="background-color:aquamarine;">
+        <nav>导航信息-----------------</nav>
+        <h1>@ViewBag.Title FWQ Layout Test</h1>
+    </div>
+    <hr />
+    <div class="content">
+        @RenderBody()
+    </div>
+    <hr />
+    <div class="footer" style="background-color:aliceblue;">
+        @if (IsSectionDefined("footer"))
+        {
+            RenderSection("footer");
+        }
+        else
+        {
+            <p>Default Layout Footer!</p>
+        }
+        <footer>底部信息--------------</footer>
+    </div>
+</body>
+</html>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreMVCViewTest1.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,6 +18,8 @@ namespace CoreMVCViewTest1
         {
             //引入MVC模块
             services.AddMvc();
+            //配置DbContext注入
+            services.AddTransient<CoreLearnTestDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

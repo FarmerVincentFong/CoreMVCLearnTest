@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "PartialTestIndex";
+}
+<h3>@ViewBag.Title</h3>
+<p>PartialTestIndex Demo By fwq</p>
+@Html.Partial("_DateTimeInfo")
+<hr />
+@await Html.PartialAsync("_DateTimeInfo")
+<hr />
+@*@{await Html.RenderPartialAsync("_CopyRight"); }*@
+<hr />
+@using CoreMVCViewTest1.Models;
+@await Html.PartialAsync("_CopyRight", new Person() { Name = "LILI", Birthday = new DateTime(2010, 2, 2), Age = 22 })

@@ -20,6 +20,9 @@ namespace CoreMVCViewTest1
             services.AddMvc();
             //配置DbContext注入
             services.AddTransient<CoreLearnTestDbContext>();
+            //配置Repository注入
+            services.AddTransient<UserRepository>();
+            //services.AddDbContext<CoreLearnTestDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -21,5 +21,16 @@ namespace CoreMVCViewTest1.Models
         public int Age { get; set; }
         [Column("hobby")]
         public string Hobby { get; set; }
+
+        //设置属性值，除了主键不修改
+        public void SetValNoPk(UserEntity newUser)
+        {
+            if (newUser != null)
+            {
+                this.Name = newUser.Name;
+                this.Age = newUser.Age;
+                this.Hobby = newUser.Hobby;
+            }
+        }
     }
 }

@@ -31,7 +31,8 @@ namespace WebApplicationEFCoreLocalTest1.Repositories
         //查询所有
         public List<UserEntity> QueryAll()
         {
-            using (DbContext)
+            //Dispose这个DbContext后，在调用其他方法访问，会抛Context已销毁异常
+            //using (DbContext)
             {
                 return DbContext.Users.ToList();
             }
@@ -75,7 +76,7 @@ namespace WebApplicationEFCoreLocalTest1.Repositories
         }
 
         //查询年龄
-        public List<UserEntity> QueryByAge(int age)
+        public List<UserEntity> QueryByAge(short age)
         {
             using (DbContext)
             {
@@ -84,11 +85,12 @@ namespace WebApplicationEFCoreLocalTest1.Repositories
         }
 
         //查看指定列
-        public List<string> QueryNamesByAge(int age)
+        public List<string> QueryNamesByAge(short age)
         {
             using (DbContext)
             {
-                return DbContext.Users.Where(u => u.Age == age).Select((u, i) => u.Name).ToList();
+                var ee = DbContext.Users.Where(u => u.Age == age);
+                return ee.Select(u => u.Name).ToList();
             }
         }
 
@@ -97,14 +99,14 @@ namespace WebApplicationEFCoreLocalTest1.Repositories
         {
             using (DbContext)
             {
-                return DbContext.Users.Skip((PageIndex - 1) * pageSize).Take(pageSize).ToList();
+                return DbContext.Users.Skip(((PageIndex < 1 ? 1 : PageIndex) - 1) * pageSize).Take(pageSize).ToList();
             }
         }
 
         //使用事务：将年龄<0的用户修改年龄为0
         public int FixAgeByTrans()
         {
-            using (DbContext)
+            //using (DbContext)
             {
                 using (var trans = DbContext.Database.BeginTransaction())
                 {

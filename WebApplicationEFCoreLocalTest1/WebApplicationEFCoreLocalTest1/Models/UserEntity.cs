@@ -21,7 +21,7 @@ namespace WebApplicationEFCoreLocalTest1.Models
         [Column("name")]
         public string Name { get; set; }
         [Column("age")]
-        public int Age { get; set; }
+        public short Age { get; set; }
         [Column("hobby")]
         public string Hobby { get; set; }
     }

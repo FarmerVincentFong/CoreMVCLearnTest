@@ -33,9 +33,10 @@ namespace WebApplicationEFCoreLocalTest1
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //配置DbContext注入
-            string sdf = Configuration.GetConnectionString("fwqdb");
             services.AddTransient<CusDbContext>();
+            //配置Repository注入
             services.AddTransient<UserRepository>();
+            services.AddTransient<UserWithSqlRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplicationEFCoreLocalTest1.Models;
 using WebApplicationEFCoreLocalTest1.Repositories;
 
-
 namespace WebApplicationEFCoreLocalTest1.Controllers
 {
     public class DbUserController : Controller
@@ -18,8 +17,6 @@ namespace WebApplicationEFCoreLocalTest1.Controllers
             //注入UserRepository
             this.Repository = repos;
         }
-
-        [HttpPost]
         public IActionResult AddUser(UserEntity newUser)
         {
             var msg = Repository.Add(newUser) > 0 ? "Success" : "Fail";

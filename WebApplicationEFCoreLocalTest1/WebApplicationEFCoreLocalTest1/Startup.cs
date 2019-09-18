@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplicationEFCoreLocalTest1.Repositories;
+using WebApplicationEFCoreLocalTest1.Middlewares;
 
 namespace WebApplicationEFCoreLocalTest1
 {
@@ -54,6 +55,9 @@ namespace WebApplicationEFCoreLocalTest1
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            //使用验签中间件
+            //app.UseTokenCheck();
+            app.UseMiddleware<TokenCheckMiddleware>();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

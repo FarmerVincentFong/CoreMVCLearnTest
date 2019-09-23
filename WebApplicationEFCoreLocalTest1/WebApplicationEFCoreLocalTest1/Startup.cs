@@ -57,7 +57,7 @@ namespace WebApplicationEFCoreLocalTest1
 
             //使用验签中间件
             //app.UseTokenCheck();
-            app.UseMiddleware<TokenCheckMiddleware>();
+            //app.UseMiddleware<TokenCheckMiddleware>();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

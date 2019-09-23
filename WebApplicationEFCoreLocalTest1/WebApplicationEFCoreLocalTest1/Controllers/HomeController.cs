@@ -5,14 +5,49 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplicationEFCoreLocalTest1.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WebApplicationEFCoreLocalTest1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
+        {
+            //依赖注入
+            this._logger = logger;
+        }
         public IActionResult Index()
         {
+            _logger.LogInformation("-------\r\nindex: hello world by fwq\r\n------");   //测试写日志
             return View();
+        }
+
+        //检测手机号，并写日志
+        public IActionResult CheckPhone(string phone)
+        {
+            _logger.LogInformation($"------\r\ncheck phone：{phone}\r\n------");
+            bool result = true;
+            string msg = "pass";
+            if (string.IsNullOrEmpty(phone))
+            {
+                result = false;
+                msg = "phone number is empty";
+                _logger.LogError($"------\r\ncheck phone：{msg}\r\n------");
+            }
+            else if (phone.Length != 11)
+            {
+                result = false;
+                msg = "wrong phone number length";
+                _logger.LogWarning($"------\r\ncheck phone：{msg}\r\n------");
+            }
+            else
+            {
+                result = true;
+                msg = "phone check pass";
+                _logger.LogInformation($"------\r\ncheck phone：{msg}\r\n------");
+            }
+            return Json(new { Message = msg, Result = result, Phone = phone });
         }
 
         public IActionResult About()

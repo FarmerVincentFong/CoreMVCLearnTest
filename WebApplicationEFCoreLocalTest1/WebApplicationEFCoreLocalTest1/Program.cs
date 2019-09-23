@@ -17,8 +17,16 @@ namespace WebApplicationEFCoreLocalTest1
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                 .UseStartup<Startup>().ConfigureLogging(logging =>
+                 {
+                     //配置内置日志组件
+                     logging.ClearProviders();
+                     logging.SetMinimumLevel(LogLevel.Information);
+                     logging.AddConsole();
+                 });
+        }
     }
 }

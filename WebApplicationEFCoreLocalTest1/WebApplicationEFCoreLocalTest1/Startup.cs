@@ -42,10 +42,10 @@ namespace WebApplicationEFCoreLocalTest1
             #region 测试依赖注入及其生命周期
             // 默认构造
             services.AddSingleton<ITestOperationSingleton, TestOperation>();
-            //自定义传入Guid空值
-            services.AddSingleton<ITestOperationSingleton>(new TestOperation());
             // 自定义传入一个New的Guid
             services.AddSingleton<ITestOperationSingleton>(new TestOperation(Guid.Empty));
+            //自定义传入Guid空值
+            services.AddSingleton<ITestOperationSingleton>(new TestOperation());
             //Transient服务
             services.AddTransient<ITestOperationTransient, TestOperation>();
             //Scoped服务

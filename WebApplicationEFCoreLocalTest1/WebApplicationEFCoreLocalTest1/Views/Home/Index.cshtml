@@ -1,8 +1,11 @@
-﻿@{
+﻿@using WebApplicationEFCoreLocalTest1.DIServices;
+@{
     ViewData["Title"] = "Home Page";
 }
+@inject ITestOperationScoped testOpera
 
 <h3>FRP测试 当前时间：@DateTime.Now</h3>
+<h3>View的依赖注入测试：@testOpera.OpId</h3>
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
